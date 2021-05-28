@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 928,
   "graphTooltip": 1,
-  "id": 27,
-  "iteration": 1622234155791,
+  "id": 28,
+  "iteration": 1622234527356,
   "links": [],
   "panels": [
     {
@@ -8189,7 +8189,9 @@
         "datasource": "${DS_INFLUXDB_TELEGRAF}",
         "definition": "",
         "description": null,
-        "error": null,
+        "error": {
+          "message": "Datasource named ${DS_INFLUXDB_TELEGRAF} was not found"
+        },
         "hide": 0,
         "includeAll": false,
         "label": "Server",
@@ -8318,27 +8320,6 @@
         "tagsQuery": null,
         "type": "query",
         "useTags": false
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "InfluxDB at 37.46.129.30",
-          "value": "InfluxDB at 37.46.129.30"
-        },
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
-        "name": "DS_INFLUXDB_TELEGRAF",
-        "options": [],
-        "query": "influxdb",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
       }
     ]
   },
