@@ -12,12 +12,12 @@
       }
     ]
   },
-  "description": "InfluxDB dashboards for telegraf metrics",
+  "description": "Telegraf metrics from InfluxDB",
   "editable": true,
   "gnetId": 928,
   "graphTooltip": 1,
-  "id": 22,
-  "iteration": 1622231921506,
+  "id": 27,
+  "iteration": 1622234155791,
   "links": [],
   "panels": [
     {
@@ -8082,7 +8082,8 @@
   "style": "dark",
   "tags": [
     "influxdb",
-    "telegraf"
+    "telegraf",
+    "grafana"
   ],
   "templating": {
     "list": [
@@ -8371,7 +8372,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Telegraf: system dashboard",
+  "title": "System Dashboard",
   "uid": "000000127",
-  "version": 6
+  "version": 2
 }
