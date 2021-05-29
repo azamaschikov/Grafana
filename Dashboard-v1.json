@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 928,
   "graphTooltip": 1,
-  "id": 44,
-  "iteration": 1622238117216,
+  "id": 51,
+  "iteration": 1622274097922,
   "links": [],
   "panels": [
     {
@@ -6266,6 +6266,13 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
+          "scopedVars": {
+            "netif": {
+              "selected": false,
+              "text": "ens3",
+              "value": "ens3"
+            }
+          },
           "seriesOverrides": [
             {
               "alias": "/ in$/",
@@ -6464,6 +6471,13 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
+          "scopedVars": {
+            "netif": {
+              "selected": false,
+              "text": "ens3",
+              "value": "ens3"
+            }
+          },
           "seriesOverrides": [
             {
               "alias": "/ in$/",
@@ -6664,6 +6678,13 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
+          "scopedVars": {
+            "netif": {
+              "selected": false,
+              "text": "ens3",
+              "value": "ens3"
+            }
+          },
           "seriesOverrides": [],
           "spaceLength": 10,
           "stack": false,
@@ -6860,6 +6881,13 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
+          "scopedVars": {
+            "netif": {
+              "selected": false,
+              "text": "ens3",
+              "value": "ens3"
+            }
+          },
           "seriesOverrides": [],
           "spaceLength": 10,
           "stack": false,
@@ -7009,6 +7037,13 @@
         }
       ],
       "repeat": "netif",
+      "scopedVars": {
+        "netif": {
+          "selected": false,
+          "text": "ens3",
+          "value": "ens3"
+        }
+      },
       "title": "Timeline: Network $netif",
       "type": "row"
     },
@@ -7661,6 +7696,13 @@
         }
       ],
       "repeat": "disk",
+      "scopedVars": {
+        "disk": {
+          "selected": false,
+          "text": "vda",
+          "value": "vda"
+        }
+      },
       "title": "Timeline: Operations /dev/$disk",
       "type": "row"
     },
@@ -8059,6 +8101,425 @@
         }
       ],
       "repeat": "mountpoint",
+      "scopedVars": {
+        "mountpoint": {
+          "selected": false,
+          "text": "/",
+          "value": "/"
+        }
+      },
+      "title": "Timeline: Usage $mountpoint",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 62057,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_INFLUXDB_TELEGRAF}",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 0,
+            "y": 292
+          },
+          "hiddenSeries": false,
+          "id": 62058,
+          "interval": "$inter",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.7",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatIteration": 1622274097922,
+          "repeatPanelId": 52240,
+          "repeatedByRow": true,
+          "scopedVars": {
+            "mountpoint": {
+              "selected": false,
+              "text": "/boot",
+              "value": "/boot"
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "/total/",
+              "color": "#BF1B00",
+              "fill": 0,
+              "linewidth": 2,
+              "zindex": 3
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "alias": "$tag_host: mountpoint $tag_path - $col",
+              "dsType": "influxdb",
+              "function": "mean",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": [
+                    "auto"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": [
+                    "tag"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "key": "path",
+                  "params": [
+                    "tag"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "disk_total",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(total) AS \"total\", mean(used) as \"used\" FROM \"disk\" WHERE \"host\" =~ /$server$/ AND \"path\" =~ /^$mountpoint$/AND $timeFilter GROUP BY time($interval), \"host\", \"path\"",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Disk Usage $mountpoint",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_INFLUXDB_TELEGRAF}",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 12,
+            "y": 292
+          },
+          "hiddenSeries": false,
+          "id": 62059,
+          "interval": "$inter",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.7",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatIteration": 1622274097922,
+          "repeatPanelId": 33458,
+          "repeatedByRow": true,
+          "scopedVars": {
+            "mountpoint": {
+              "selected": false,
+              "text": "/boot",
+              "value": "/boot"
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "/used/",
+              "color": "#447EBC",
+              "zindex": 3
+            },
+            {
+              "alias": "/total/",
+              "bars": false,
+              "color": "#BF1B00",
+              "fill": 0,
+              "lines": true,
+              "linewidth": 1
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "alias": "$tag_host: mountpoint $tag_path - $col",
+              "dsType": "influxdb",
+              "function": "mean",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": [
+                    "auto"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": [
+                    "tag"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "key": "path",
+                  "params": [
+                    "tag"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "disk_inodes_free",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(inodes_used) as \"used\" FROM \"disk\" WHERE \"host\" =~ /$server$/  AND \"path\" =~ /^$mountpoint$/ AND $timeFilter GROUP BY time($interval), \"host\", \"path\"",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_host: mountpoint $tag_path - $col",
+              "dsType": "influxdb",
+              "function": "mean",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": [
+                    "auto"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": [
+                    "tag"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "key": "path",
+                  "params": [
+                    "tag"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "disk_inodes_free",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(inodes_free) + mean(inodes_used) as \"total\" FROM \"disk\" WHERE \"host\" =~ /$server$/  AND \"path\" =~ /^$mountpoint$/ AND $timeFilter GROUP BY time($interval), \"host\", \"path\"",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Disk Inodes $mountpoint",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "repeatIteration": 1622274097922,
+      "repeatPanelId": 62056,
+      "scopedVars": {
+        "mountpoint": {
+          "selected": false,
+          "text": "/boot",
+          "value": "/boot"
+        }
+      },
       "title": "Timeline: Usage $mountpoint",
       "type": "row"
     }
@@ -8201,9 +8662,7 @@
         "datasource": "$DS_INFLUXDB_TELEGRAF",
         "definition": "",
         "description": null,
-        "error": {
-          "message": "Datasource named $DS_INFLUXDB_TELEGRAF was not found"
-        },
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Mountpoint",
@@ -8231,9 +8690,7 @@
         "datasource": "$DS_INFLUXDB_TELEGRAF",
         "definition": "",
         "description": null,
-        "error": {
-          "message": "Datasource named $DS_INFLUXDB_TELEGRAF was not found"
-        },
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "CPU",
@@ -8261,9 +8718,7 @@
         "datasource": "$DS_INFLUXDB_TELEGRAF",
         "definition": "",
         "description": null,
-        "error": {
-          "message": "Datasource named $DS_INFLUXDB_TELEGRAF was not found"
-        },
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Disk",
@@ -8291,9 +8746,7 @@
         "datasource": "$DS_INFLUXDB_TELEGRAF",
         "definition": "",
         "description": null,
-        "error": {
-          "message": "Datasource named $DS_INFLUXDB_TELEGRAF was not found"
-        },
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Network interface",
@@ -8314,8 +8767,8 @@
     ]
   },
   "time": {
-    "from": "2021-05-28T18:36:29.302Z",
-    "to": "2021-05-28T22:36:29.302Z"
+    "from": "now-30m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
